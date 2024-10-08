@@ -1,8 +1,3 @@
-type BlogPost = {
-  slug: string;
-  created_at: string;
-};
-
 type SitemapEntry = {
   url: string;
   lastModified: string;
@@ -18,7 +13,7 @@ type SitemapEntry = {
 };
 
 export default async function sitemap(): Promise<SitemapEntry[]> {
-  const baseUrl = "https://starter.rasmic.xyz";
+  const baseUrl = "https://www.goshenpay.com";
 
   const staticPages: SitemapEntry[] = [
     {
@@ -26,12 +21,6 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
       lastModified: new Date().toISOString(),
       changeFrequency: "monthly",
       priority: 1,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString(),
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
   ];
 

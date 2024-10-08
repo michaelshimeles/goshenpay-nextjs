@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/dashboard/',
     },
-    sitemap: 'https://starter.rasmic.xyz/sitemap.xml',
+    sitemap: 'https://www.goshenpay.com/sitemap.xml',
   }
 }
