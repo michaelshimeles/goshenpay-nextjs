@@ -7,33 +7,19 @@ import { TITLE_TAILWIND_CLASS } from '@/utils/constants';
 
 export default function HeroSection() {
     return (
-        <section className='flex flex-col items-center justify-center leading-6 mt-[3rem]' aria-label="Nextjs Starter Kit Hero">
-            <h1 className={`${TITLE_TAILWIND_CLASS} scroll-m-20 font-semibold tracking-tight text-center max-w-[1120px] bg-gradient-to-b dark:text-white`}>
+        <section className='flex flex-col items-center justify-center min-h-[60vh] leading-6 mt-[3rem]' aria-label="Nextjs Starter Kit Hero">
+            <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-5xl scroll-m-20 font-semibold tracking-tight text-center max-w-[1120px] bg-gradient-to-b dark:text-white`}>
                 Easy To Setup And Use Church Payments Platform
             </h1>
-            <p className="mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
+            <p className="text-sm mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
                 Focus on what really matters, serving your church and not the payment system.
             </p>
-            <div className="flex justify-center items-center gap-3">
-                <Link href="/dashboard" className="mt-5">
-                    <Button className="animate-buttonheartbeat rounded-md bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white">
-                        Get Started
-                    </Button>
-                </Link>
-
-                <Link
-                    href="https://discord.gg/HUcHdrrDgY"
-                    target='_blank'
-                    className="mt-5"
-                    aria-label="Join Discord (opens in a new tab)"
-                >
-                    <Button variant="outline" className="flex gap-1">
-                        Join Discord
-                        <ArrowRight className='w-4 h-4' aria-hidden="true" />
-                    </Button>
-                </Link>
+            <div className="flex justify-center items-center gap-3 mt-3">
+                <Button disabled className="animate-buttonheartbeat rounded-md bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white">
+                    Coming Soon
+                </Button>
             </div>
-            <div>
+            {/* <div>
                 <div className="relative flex max-w-6xl justify-center overflow-hidden mt-7">
                     <div className="relative rounded-xl">
                         <Image
@@ -55,7 +41,7 @@ export default function HeroSection() {
                         <BorderBeam size={250} duration={12} delay={9} />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }
