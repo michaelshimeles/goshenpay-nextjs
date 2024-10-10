@@ -1,3 +1,4 @@
+"use server"
 import { z } from "zod";
 import { churchSchema } from "../types";
 import { revalidatePath } from "next/cache";

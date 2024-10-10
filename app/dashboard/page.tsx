@@ -21,7 +21,7 @@ export default async function Dashboard() {
             <p className="text-sm text-muted-foreground mb-3">
               To create a donation page, click the button below.
             </p>
-            <Link href="/dashboard/create">
+            <Link href="/create">
               <Button>Create Donation Page</Button>
             </Link>
           </div>

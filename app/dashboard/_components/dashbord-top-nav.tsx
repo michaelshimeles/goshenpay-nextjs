@@ -11,6 +11,7 @@ import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Banknote, Folder, HomeIcon, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { ReactNode } from 'react'
+import { PlusIcon } from 'lucide-react'
 
 export default function DashboardTopNav({ children }: { children: ReactNode }) {
   return (
@@ -67,11 +68,11 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
           </SheetContent>
         </Dialog>
         <div className="flex justify-center items-center gap-2 ml-auto">
-          <Button variant="ghost" size="icon">
-            <Link href="/dashboard?search=create">
-              <HomeIcon className=" h-4 w-4" />
-            </Link>
-          </Button>
+          <Link href="/create">
+            <Button variant="outline" size="icon">
+              <PlusIcon className="h-4 w-4" />
+            </Button>
+          </Link>
           {config?.auth?.enabled && <UserProfile />}
           <ModeToggle />
         </div>
