@@ -7,11 +7,13 @@ import { createChurch } from '@/utils/actions/create-church';
 import { churchSchema } from '@/utils/types';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { revalidatePath } from 'next/cache';
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from 'sonner';
 import { z } from "zod";
 
 export default function ChurchForm({ userId }: { userId: string }) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof churchSchema>>({
     resolver: zodResolver(churchSchema),
     defaultValues: {
@@ -32,10 +34,11 @@ export default function ChurchForm({ userId }: { userId: string }) {
   async function onSubmit(data: z.infer<typeof churchSchema>) {
     try {
       const response = await createChurch(data);
-      console.log("response", response);
 
       toast("Your church has been created.");
       revalidatePath("/dashboard");
+      router.replace("/dashboard");
+
       return response;
     } catch (error) {
       return error;

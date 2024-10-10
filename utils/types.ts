@@ -15,9 +15,7 @@ export const churchSchema = z.object({
   org_phone: z.string(),
 })
 
-export const getChurchSchema = z.object({
-  id: z.string(),
-  church_id: z.string(),
+export const updateChurchSchema = z.object({
   org_name: z.string(),
   org_site: z.string(),
   org_email: z.string(),

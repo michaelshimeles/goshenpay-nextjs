@@ -1,13 +1,10 @@
 import { z } from "zod";
-import { churchSchema } from "../types";
-import { revalidatePath } from "next/cache";
+import { updateChurchSchema } from "../types";
 
-export async function createChurch(data: z.infer<typeof churchSchema>) {
-
-  console.log("data", data);
+export async function updateChurch(data: z.infer<typeof updateChurchSchema>) {
   try {
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/create-church`,
+      `${process.env.NEXT_PUBLIC_API_URL}/update-church`,
       {
         method: "POST",
         body: JSON.stringify(data),

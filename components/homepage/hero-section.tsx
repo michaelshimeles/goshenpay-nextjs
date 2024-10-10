@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function HeroSection() {
@@ -9,10 +10,12 @@ export default function HeroSection() {
             <p className="text-sm mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
                 Focus on what really matters, serving your church and not the payment system.
             </p>
-            <div className="flex justify-center items-center gap-3 mt-3">
-                <Button disabled className="animate-buttonheartbeat rounded-md bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white">
-                    Coming Soon
-                </Button>
+            <div className="flex justify-center items-center gap-3">
+                <Link href="/dashboard" className="mt-5">
+                    <Button className="animate-buttonheartbeat rounded-md bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white">
+                        Get Started
+                    </Button>
+                </Link>
             </div>
             {/* <div>
                 <div className="relative flex max-w-6xl justify-center overflow-hidden mt-7">
