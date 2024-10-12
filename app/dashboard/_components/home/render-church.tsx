@@ -1,16 +1,13 @@
 "use client"
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 
-export default function RenderChurch({ church, userId }: { church: any, userId: string }) {
-  const queryParams = useSearchParams();
-  const search = queryParams.get('search') || '';
+export default function RenderChurch({ church }: { church: any }) {
 
   return (
-    <main className="flex flex-col gap-2 lg:gap-2 min-h-[90vh] w-full">
+    <main className="flex flex-col gap-2 lg:gap-2">
       <Link href={`/dashboard/${church.church_id}`}>
-        <Card className="flex flex-col px-[1rem] justify-between py-[1rem] max-w-[350px] w-full">
+        <Card className="flex flex-col px-[1rem] justify-between py-[1rem] min-w-[350px] max-w-[350px] w-full">
           <div className='flex flex-col w-full justify-center items-startxw'>
             <h2 className="text-lg font-bold">{church?.org_name}</h2>
             <p className="text-gray-400 pt-1 text-sm">{church?.org_description}</p>

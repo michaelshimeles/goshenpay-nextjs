@@ -1,6 +1,7 @@
 "server only";
-import { auth, clerkClient } from "@clerk/nextjs/server";
-export const getChurch = async (church_id: string) => {
+import { auth } from "@clerk/nextjs/server";
+import { clerkClient } from "@clerk/nextjs/server";
+export const getChurches = async () => {
   const { userId } = auth();
 
   const result = await clerkClient.users.getUser(userId!);
@@ -11,20 +12,18 @@ export const getChurch = async (church_id: string) => {
 
   try {
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/get-church`,
+      `${process.env.NEXT_PUBLIC_API_URL}/get-churches`,
       {
         method: "POST",
-        body: JSON.stringify({ user_id: userId, church_id }),
+        body: JSON.stringify({ userId }),
         headers: {
           "Content-Type": "application/json",
         },
         next: {
-          tags: [`get-church-${church_id}`],
-        },
+          tags: ['get-churches']
+        }
       }
     );
-
-    console.log("fetch", `get-church-${church_id}`)
 
     const response = await result.json();
 

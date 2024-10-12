@@ -1,25 +1,17 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
-import { z } from "zod";
 import { fetcherFn } from "../functions";
-import { createChurchSchema } from "../types";
 
-type CreateChurchData = z.infer<typeof createChurchSchema>;
+export const deleteChurch = async (church_id: string, user_id: string) => {
 
-type CreateChurchResponse = {
-  success: boolean;
-  message: string;
-  churchId?: string;
-};
-
-export async function createChurch(
-  data: CreateChurchData
-): Promise<CreateChurchResponse> {
+  console.log('church_id', church_id)
   try {
-    const result = await fetcherFn<CreateChurchResponse>(
-      "create-church",
-      data,
+    const result = await fetcherFn(
+      "delete-church",
+      {
+        church_id,
+        user_id,
+      },
       {
         method: "POST",
         next: { tags: ["churches"] },
@@ -28,7 +20,7 @@ export async function createChurch(
 
     if (result.success) {
       // Revalidate the 'churches' cache tag
-      revalidateTag("churches");
+      // revalidateTag("churches");
     }
 
     return {
@@ -43,4 +35,6 @@ export async function createChurch(
       message: "An error occurred while creating the church",
     };
   }
-}
+
+  return;
+};

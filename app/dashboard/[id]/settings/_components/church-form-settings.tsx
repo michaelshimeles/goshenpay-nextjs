@@ -51,11 +51,8 @@ export default function ChurchFormSettings({ church, id }: { church: z.infer<typ
     }
     try {
       const response = await updateChurch(result);
+
       toast.success("Your church has been updated.");
-
-      // Navigate to the dashboard page
-      router.replace(`/dashboard`);
-
       return response;
     } catch (error) {
       toast.error("Failed to update church.");
@@ -140,7 +137,7 @@ export default function ChurchFormSettings({ church, id }: { church: z.infer<typ
             <FormItem>
               <FormLabel>Description</FormLabel>
               <FormControl>
-                <Textarea {...field} defaultValue={church?.org_description} />
+                <Textarea {...field} defaultValue={church?.org_description!} />
               </FormControl>
               <FormMessage />
             </FormItem>
