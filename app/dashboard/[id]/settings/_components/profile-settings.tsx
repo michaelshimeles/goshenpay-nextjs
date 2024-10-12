@@ -4,7 +4,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from '@/components/ui/textarea';
 import { createChurch } from '@/utils/actions/create-church';
-import { churchSchema } from '@/utils/types';
+import { createChurchSchema } from '@/utils/types';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -13,10 +13,10 @@ import { z } from "zod";
 
 export default function ProfileSettings() {
   const router = useRouter();
-  const form = useForm<z.infer<typeof churchSchema>>({
-    resolver: zodResolver(churchSchema),
+  const form = useForm<z.infer<typeof createChurchSchema>>({
+    resolver: zodResolver(createChurchSchema),
   });
-  async function onSubmit(data: z.infer<typeof churchSchema>) {
+  async function onSubmit(data: z.infer<typeof createChurchSchema>) {
     try {
       const response = await createChurch(data);
 
