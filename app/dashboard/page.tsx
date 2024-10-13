@@ -11,7 +11,7 @@ export default async function Dashboard() {
       {church?.result?.length > 0 ? church?.result?.map((church: any, index: number) =>
         <RenderChurch key={index} church={church} />)
         :
-        <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+        <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm min-h-[90vh]">
           <div className="flex flex-col items-center text-center">
             <h1 className="text-2xl font-bold tracking-tight">
               You have no donation page

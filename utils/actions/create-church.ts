@@ -27,8 +27,8 @@ export async function createChurch(
     );
 
     if (result.success) {
-      // Revalidate the 'churches' cache tag
-      revalidateTag("churches");
+      // Revalidate the 'get-churches' cache tag
+      revalidateTag("get-churches");
     }
 
     return {

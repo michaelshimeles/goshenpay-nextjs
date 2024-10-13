@@ -33,7 +33,6 @@ export const getChurches = async () => {
 
     return response;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

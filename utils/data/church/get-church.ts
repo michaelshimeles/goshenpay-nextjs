@@ -24,7 +24,6 @@ export const getChurch = async (church_id: string) => {
       }
     );
 
-    console.log("fetch", `get-church-${church_id}`)
 
     const response = await result.json();
 

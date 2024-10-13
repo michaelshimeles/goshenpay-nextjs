@@ -3,7 +3,6 @@ import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 
 export default function RenderChurch({ church }: { church: any }) {
-
   return (
     <main className="flex flex-col gap-2 lg:gap-2">
       <Link href={`/dashboard/${church.church_id}`}>

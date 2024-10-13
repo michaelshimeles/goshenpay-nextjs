@@ -33,7 +33,6 @@ export default function ChurchFormSettings({ church, id }: { church: z.infer<typ
   });
 
   async function onSubmit(data: z.infer<typeof updateChurchSchema>) {
-    console.log("data", data);
 
     const result = {
       church_id: id,

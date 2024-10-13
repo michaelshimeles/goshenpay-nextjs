@@ -1,10 +1,12 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { fetcherFn } from "../functions";
 
 export const deleteChurch = async (church_id: string, user_id: string) => {
+  console.log("church_id", church_id);
+  console.log("user_id", user_id);
 
-  console.log('church_id', church_id)
   try {
     const result = await fetcherFn(
       "delete-church",
@@ -19,8 +21,8 @@ export const deleteChurch = async (church_id: string, user_id: string) => {
     );
 
     if (result.success) {
-      // Revalidate the 'churches' cache tag
-      // revalidateTag("churches");
+      // Revalidate the 'get-churches' cache tag
+      revalidateTag("get-churches");
     }
 
     return {

@@ -18,6 +18,7 @@ export default async function Settings({ params }: { params: { id: string } }) {
   const church = await getChurch(params?.id!)
   const { userId } = auth()
 
+
   const info = church?.result?.[0]
 
   return (
@@ -37,7 +38,7 @@ export default async function Settings({ params }: { params: { id: string } }) {
         </div>
         <div>
           <Dialog>
-            <DialogTrigger>
+            <DialogTrigger asChild>
               <Button variant="destructive">Delete this site</Button>
             </DialogTrigger>
             <DialogContent>
@@ -49,7 +50,7 @@ export default async function Settings({ params }: { params: { id: string } }) {
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter>
-                <DeleteButton info={info} userId={userId} />
+                <DeleteButton info={info} userId={userId!} />
               </DialogFooter>
             </DialogContent>
           </Dialog>

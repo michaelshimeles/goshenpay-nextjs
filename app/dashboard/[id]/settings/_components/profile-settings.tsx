@@ -20,8 +20,8 @@ export default function ProfileSettings() {
     try {
       const response = await createChurch(data);
 
-      toast("Your church has been created.");
-      router.replace("/dashboard");
+      // toast("Your church has been created.");
+      // router.replace("/dashboard");
 
       return response;
     } catch (error) {

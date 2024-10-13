@@ -40,23 +40,17 @@ export default function Create() {
 
   async function onSubmit(data: z.infer<typeof createChurchSchema>) {
     setIsSubmitting(true);
-    console.log("Form submitted with data:", data);
     try {
       const response = await createChurch(data);
-      console.log("Server response:", response);
       if (response?.success) {
         toast.success("Your church has been created, redirecting to dashboard");
-        setTimeout(() => {
-          router.push('/dashboard');
-        }, 1000);
+        router.push('/dashboard');
       } else {
         toast.error("Failed to create church. Please try again.");
       }
     } catch (error) {
       console.error("Error creating church:", error);
       toast.error("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
     }
   }
 

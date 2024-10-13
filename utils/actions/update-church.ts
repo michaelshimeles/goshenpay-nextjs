@@ -25,7 +25,6 @@ export async function updateChurch(data: z.infer<typeof updateChurchSchema>) {
       // Revalidate the 'churches' cache tag
       revalidateTag("get-churches");
       revalidateTag(`get-church-${data?.church_id}`);
-      console.log("update", `get-church-${data?.church_id}`);
     }
 
     return {

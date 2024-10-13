@@ -43,7 +43,6 @@ export async function fetcherFn<T = any>(
     fetchOptions.body = JSON.stringify(data);
   }
 
-  console.log('data', data)
   try {
     const response = await fetch(`${apiUrl}/${path}`, fetchOptions);
 
