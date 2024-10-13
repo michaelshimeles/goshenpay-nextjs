@@ -12,7 +12,7 @@ export const getChurches = async () => {
 
   try {
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/get-churches`,
+      `${process.env.NEXT_PUBLIC_API_URL}/church/get-churches`,
       {
         method: "POST",
         body: JSON.stringify({ userId }),

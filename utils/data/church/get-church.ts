@@ -11,7 +11,7 @@ export const getChurch = async (church_id: string) => {
 
   try {
     const result = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/get-church`,
+      `${process.env.NEXT_PUBLIC_API_URL}/church/get-church`,
       {
         method: "POST",
         body: JSON.stringify({ user_id: userId, church_id }),

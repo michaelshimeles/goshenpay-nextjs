@@ -2,14 +2,19 @@
 
 import { revalidateTag } from "next/cache";
 import { fetcherFn } from "../functions";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 
 export const deleteChurch = async (church_id: string, user_id: string) => {
-  console.log("church_id", church_id);
-  console.log("user_id", user_id);
+  const { userId } = auth();
 
   try {
+    const clerkResult = await clerkClient.users.getUser(userId!);
+
+    if (!clerkResult?.id) {
+      return null;
+    }
     const result = await fetcherFn(
-      "delete-church",
+      "church/delete",
       {
         church_id,
         user_id,

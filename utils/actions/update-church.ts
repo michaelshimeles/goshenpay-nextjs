@@ -4,6 +4,7 @@ import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { updateChurchSchema } from "../types";
 import { fetcherFn } from "../functions";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 
 type CreateChurchResponse = {
   success: boolean;
@@ -12,9 +13,17 @@ type CreateChurchResponse = {
 };
 
 export async function updateChurch(data: z.infer<typeof updateChurchSchema>) {
+
+  const { userId } = auth();
+
   try {
+    const clerkResult = await clerkClient.users.getUser(userId!);
+
+    if (!clerkResult?.id) {
+      return null;
+    }
     const result = await fetcherFn<CreateChurchResponse>(
-      "update-church",
+      "church/update",
       data,
       {
         method: "POST",
