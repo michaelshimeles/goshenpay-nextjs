@@ -36,7 +36,7 @@ export default function DashboardSideBar() {
         {
           href: `/dashboard/${dashboardId}/settings`,
           label: "Settings",
-          icon: <Globe className="h-3 w-3" />,
+          icon: <Settings className="h-3 w-3" />,
           activePath: (pathname: string) => pathname === `/dashboard/${dashboardId}/settings`
         },
         // Add more dynamic links here as needed

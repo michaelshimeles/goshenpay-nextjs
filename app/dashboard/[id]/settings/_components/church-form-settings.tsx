@@ -52,6 +52,7 @@ export default function ChurchFormSettings({ church, id }: { church: z.infer<typ
       const response = await updateChurch(result);
 
       toast.success("Your church has been updated.");
+      router.push(`/dashboard/${id}`)
       return response;
     } catch (error) {
       toast.error("Failed to update church.");

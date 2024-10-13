@@ -23,17 +23,17 @@ export default function Create() {
   const form = useForm<z.infer<typeof createChurchSchema>>({
     resolver: zodResolver(createChurchSchema),
     defaultValues: {
-      org_name: "Grace Bible Fellowship Church",
-      org_site: "https://church.goshenpay.com",
-      org_email: "info@goshenpay.com",
+      org_name: "Tsega Bible Fellowship Church",
+      org_site: "https://www.tsegabiblechurch.com",
+      org_email: "tsegabiblechurch@gmail.com",
       org_phone: "(123) 456-7890",
-      org_address: "123 Church St.",
-      org_city: "Goshen",
-      org_state: "NY",
-      org_zip: "12345",
-      org_country: "USA",
-      org_description: "A brief description of your organization.",
-      org_logo: "https://example.com/logo.png",
+      org_address: "65 Sunrise Ave.",
+      org_city: "North York",
+      org_state: "ON",
+      org_zip: "M4A 1A9",
+      org_country: "CA",
+      org_description: "Grow in grace. Grow in knowledge.",
+      org_logo: "https://www.tsegabiblechurch.com/_next/image?url=https%3A%2F%2Fvngdsgitgimaumyqaatn.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fimages%2FTBF.webp&w=128&q=75",
       userId: user?.id!,
     }
   });
@@ -60,63 +60,24 @@ export default function Create() {
       <div className='flex justify-end items-center w-full mb-[1rem] px-[3rem]'>
         <XIcon onClick={() => router.back()} className='cursor-pointer text-gray-300' />
       </div>
-      <div className='w-fit flex flex-col justify-center items-center'>
+     {isSubmitting ?
+          <div className='mt-[5rem]'><LoadingSpinner /></div> : <div className='w-fit flex flex-col justify-center items-center'>
         <h1 className="text-3xl font-semibold tracking-tight text-left w-full">
           Create a donation page
         </h1>
         <p className="leading-7 text-sm dark:text-gray-400 text-left w-full">
           Create a donation page for your church or organization.
         </p>
-        {isSubmitting ? <div className='mt-[5rem]'><LoadingSpinner /></div> : <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[600px] space-y-3 mt-[1rem]">
-            <FormField
-              control={form.control}
-              name="org_name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Organization Name</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='Grace Bible Fellowship Church' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="org_site"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Site URL</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='https://church.goshenpay.com' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="org_logo"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Logo URL</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='https://example.com/logo.png' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex gap-2 w-full">
+         <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[600px] space-y-3 mt-[1rem]">
               <FormField
                 control={form.control}
-                name="org_email"
+                name="org_name"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>Email</FormLabel>
+                  <FormItem>
+                    <FormLabel>Organization Name</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder='info@goshenpay.com' />
+                      <Input {...field} placeholder='Grace Bible Fellowship Church' />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,53 +85,12 @@ export default function Create() {
               />
               <FormField
                 control={form.control}
-                name="org_phone"
+                name="org_site"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>Phone Number</FormLabel>
+                  <FormItem>
+                    <FormLabel>Site URL</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder='(123) 456-7890' />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <FormField
-              control={form.control}
-              name="org_description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Textarea {...field} placeholder='A brief description of your organization.' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="org_address"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Address</FormLabel>
-                  <FormControl>
-                    <Input {...field} placeholder='123 Church St.' />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex gap-2 w-full">
-              <FormField
-                control={form.control}
-                name="org_city"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>City</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder='Goshen' />
+                      <Input {...field} placeholder='https://church.goshenpay.com' />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -178,27 +98,53 @@ export default function Create() {
               />
               <FormField
                 control={form.control}
-                name="org_state"
+                name="org_logo"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>State</FormLabel>
+                  <FormItem>
+                    <FormLabel>Logo URL</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder='NY' />
+                      <Input {...field} placeholder='https://example.com/logo.png' />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-            </div>
-            <div className="flex gap-2 w-full">
+              <div className="flex gap-2 w-full">
+                <FormField
+                  control={form.control}
+                  name="org_email"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='info@goshenpay.com' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="org_phone"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='(123) 456-7890' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
-                name="org_zip"
+                name="org_description"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>ZIP Code</FormLabel>
+                  <FormItem>
+                    <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder='12345' />
+                      <Textarea {...field} placeholder='A brief description of your organization.' />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -206,24 +152,79 @@ export default function Create() {
               />
               <FormField
                 control={form.control}
-                name="org_country"
+                name="org_address"
                 render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormLabel>Country</FormLabel>
+                  <FormItem>
+                    <FormLabel>Address</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder='USA' />
+                      <Input {...field} placeholder='123 Church St.' />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-            </div>
-            <Button type="submit" disabled={isSubmitting}>
-              {'Submit'}
-            </Button>
-          </form>
-        </Form>}
-      </div>
+              <div className="flex gap-2 w-full">
+                <FormField
+                  control={form.control}
+                  name="org_city"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>City</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='Goshen' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="org_state"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>State</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='NY' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex gap-2 w-full">
+                <FormField
+                  control={form.control}
+                  name="org_zip"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>ZIP Code</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='12345' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="org_country"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder='USA' />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <Button type="submit" disabled={isSubmitting}>
+                {'Submit'}
+              </Button>
+            </form>
+          </Form>
+      </div>}
     </div>
   )
 }

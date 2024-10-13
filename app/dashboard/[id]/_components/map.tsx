@@ -1,11 +1,11 @@
 'use client'
 
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { Skeleton } from "@/components/ui/skeleton"
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useState } from 'react'
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import { toast } from 'sonner'
-import { LoadingSpinner } from '@/components/loading-spinner'
 
 const CustomIcon = L.divIcon({
   html: `
@@ -75,7 +75,9 @@ export default function Map({ streetAddress }: { streetAddress: string }) {
   }, [streetAddress])
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <div className='w-full mt-[1rem]'>
+      <Skeleton className="h-[400px] w-full rounded-xl" />
+    </div>;
   }
 
   return (

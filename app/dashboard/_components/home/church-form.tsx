@@ -17,17 +17,17 @@ export default function ChurchForm({ userId }: { userId: string }) {
   const form = useForm<z.infer<typeof createChurchSchema>>({
     resolver: zodResolver(createChurchSchema),
     defaultValues: {
-      org_name: "Grace Bible Fellowship Church",
-      org_site: "https://church.goshenpay.com",
-      org_email: "info@goshenpay.com",
-      org_logo: "https://example.com/logo.png",
-      org_description: "A brief description of your organization.",
-      org_address: "123 Church St.",
-      org_city: "Goshen",
-      org_state: "NY",
-      org_zip: "12345",
-      org_country: "USA",
+      org_name: "Tsega Bible Fellowship Church",
+      org_site: "https://www.tsegabiblechurch.com",
+      org_email: "tsegabiblechurch@gmail.com",
       org_phone: "(123) 456-7890",
+      org_address: "65 Sunrise Ave.",
+      org_city: "North York",
+      org_state: "ON",
+      org_zip: "M4A 1A9",
+      org_country: "CA",
+      org_description: "Grow in grace. Grow in knowledge.",
+      org_logo: "https://www.tsegabiblechurch.com/_next/image?url=https%3A%2F%2Fvngdsgitgimaumyqaatn.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fimages%2FTBF.webp&w=128&q=75",
       userId: userId,
     }
   });
