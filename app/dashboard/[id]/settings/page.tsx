@@ -22,7 +22,7 @@ export default async function Settings({ params }: { params: { id: string } }) {
   const info = church?.result?.[0]
 
   return (
-    <div className="flex flex-col mb-[5rem] w-full p-4">
+    <div className="flex flex-col mb-[5rem] w-full p-6">
       <h1 className="text-3xl font-semibold tracking-tight">
         Church Settings
       </h1>

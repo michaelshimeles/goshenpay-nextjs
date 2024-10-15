@@ -4,7 +4,8 @@ import clsx from 'clsx'
 import {
   Globe,
   HomeIcon,
-  Settings
+  Settings,
+  Banknote
 } from "lucide-react"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -32,6 +33,12 @@ export default function DashboardSideBar() {
           label: "Donation Site",
           icon: <Globe className="h-3 w-3" />,
           activePath: (pathname: string) => pathname === `/dashboard/${dashboardId}`
+        },
+        {
+          href: `/dashboard/${dashboardId}/finance`,
+          label: "Finance",
+          icon: <Banknote className="h-3 w-3" />,
+          activePath: (pathname: string) => pathname === `/dashboard/${dashboardId}/finance`
         },
         {
           href: `/dashboard/${dashboardId}/settings`,
