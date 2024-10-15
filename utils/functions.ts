@@ -17,7 +17,7 @@ export async function fetcherFn<T = any>(
   data?: any,
   options: FetcherOptions = {}
 ): Promise<T> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const apiUrl = process.env.API_URL;
   if (!apiUrl) {
     throw new Error('API URL is not defined');
   }
