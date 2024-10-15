@@ -20,7 +20,7 @@ export default function ChurchForm({ userId }: { userId: string }) {
       org_name: "Tsega Bible Fellowship Church",
       org_site: "https://www.tsegabiblechurch.com",
       org_email: "tsegabiblechurch@gmail.com",
-      org_phone: "(123) 456-7890",
+      org_phone: "(289) 946-1487",
       org_address: "65 Sunrise Ave.",
       org_city: "North York",
       org_state: "ON",

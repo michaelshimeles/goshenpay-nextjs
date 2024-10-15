@@ -26,7 +26,7 @@ export default function Create() {
       org_name: "Tsega Bible Fellowship Church",
       org_site: "https://www.tsegabiblechurch.com",
       org_email: "tsegabiblechurch@gmail.com",
-      org_phone: "(123) 456-7890",
+      org_phone: "(289) 946-1487",
       org_address: "65 Sunrise Ave.",
       org_city: "North York",
       org_state: "ON",
@@ -60,15 +60,17 @@ export default function Create() {
       <div className='flex justify-end items-center w-full mb-[1rem] px-[3rem]'>
         <XIcon onClick={() => router.back()} className='cursor-pointer text-gray-300' />
       </div>
-     {isSubmitting ?
-          <div className='mt-[5rem]'><LoadingSpinner /></div> : <div className='w-fit flex flex-col justify-center items-center'>
-        <h1 className="text-3xl font-semibold tracking-tight text-left w-full">
-          Create a donation page
-        </h1>
-        <p className="leading-7 text-sm dark:text-gray-400 text-left w-full">
-          Create a donation page for your church or organization.
-        </p>
-         <Form {...form}>
+      {isSubmitting ?
+        <div className='mt-[5rem]'><LoadingSpinner /></div>
+        :
+        <div className='w-fit flex flex-col justify-center items-center'>
+          <h1 className="text-3xl font-semibold tracking-tight text-left w-full">
+            Create a donation page
+          </h1>
+          <p className="leading-7 text-sm dark:text-gray-400 text-left w-full">
+            Create a donation page for your church or organization.
+          </p>
+          <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[600px] space-y-3 mt-[1rem]">
               <FormField
                 control={form.control}
@@ -224,7 +226,7 @@ export default function Create() {
               </Button>
             </form>
           </Form>
-      </div>}
+        </div>}
     </div>
   )
 }

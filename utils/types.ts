@@ -13,7 +13,7 @@ export const createChurchSchema = z.object({
   org_description: z.string(),
   org_logo: z.string(),
   userId: z.string(),
-})
+});
 
 export const updateChurchSchema = z.object({
   church_id: z.string().optional(),
@@ -28,4 +28,4 @@ export const updateChurchSchema = z.object({
   org_zip: z.string(),
   org_country: z.string(),
   org_phone: z.string(),
-})
+});

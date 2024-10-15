@@ -67,11 +67,11 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
           </SheetContent>
         </Dialog>
         <div className="flex justify-center items-center gap-2 ml-auto">
-          <Link href="/create">
+          {/* <Link href="/create">
             <Button variant="outline" size="icon">
               <PlusIcon className="h-4 w-4" />
             </Button>
-          </Link>
+          </Link> */}
           {config?.auth?.enabled && <UserProfile />}
           <ModeToggle />
         </div>

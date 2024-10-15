@@ -25,6 +25,8 @@ export async function createChurch(
       return null;
     }
 
+    console.log("data", data);
+
     const result = await fetcherFn<CreateChurchResponse>(
       "church/create",
       data,
