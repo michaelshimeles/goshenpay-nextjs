@@ -24,10 +24,10 @@ const links = [
     activePath: (pathname: string) => pathname === `/dashboard/finance`
   },
   {
-    href: `/dashboard/configure`,
+    href: `/dashboard/pricing`,
     label: "Configure",
     icon: <MonitorCog className="h-3 w-3" />,
-    activePath: (pathname: string) => pathname.includes(`/dashboard/configure`)
+    activePath: (pathname: string) => pathname.includes(`/dashboard/pricing`)
   },
   {
     href: `/dashboard/settings`,

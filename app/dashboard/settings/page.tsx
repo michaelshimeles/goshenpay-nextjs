@@ -9,16 +9,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { getChurch } from "@/utils/data/church/get-church";
+import { getChurches } from "@/utils/data/church/get-churches";
 import { auth } from "@clerk/nextjs/server";
 import DeleteButton from "./_components/church-delete-button";
 import ChurchFormSettings from "./_components/church-form-settings";
-import { getChurches } from "@/utils/data/church/get-churches";
 
 export default async function Settings() {
   const church = await getChurches();
 
-  let churchInfo = church?.result?.[0]
   const { userId } = auth()
 
 
