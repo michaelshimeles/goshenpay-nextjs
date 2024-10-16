@@ -25,8 +25,6 @@ export async function fetcherFn<T = any>(
   const {
     method = 'POST',
     headers = {},
-    cache = 'no-store',
-    next = { revalidate: 0 }
   } = options;
 
   const fetchOptions: RequestInit & { next?: NextFetchRequestConfig } = {
@@ -35,11 +33,10 @@ export async function fetcherFn<T = any>(
       'Content-Type': 'application/json',
       ...headers,
     },
-    cache,
-    next,
   };
 
   if (data) {
+    console.log('data', data)
     fetchOptions.body = JSON.stringify(data);
   }
 

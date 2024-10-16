@@ -1,13 +1,18 @@
-import { accountStatus } from "@/utils/data/connect/account-status";
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import RegisterPayment from '../_components/home/register-payments';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CheckCircle2, XCircle, AlertCircle, Clock } from 'lucide-react';
+import { getChurches } from "@/utils/data/church/get-churches";
+import { accountStatus } from "@/utils/data/connect/account-status";
+import { AlertCircle, CheckCircle2, Clock, XCircle } from 'lucide-react';
+import Link from 'next/link';
+import RegisterPayment from '../_components/home/register-payments';
 
-export default async function Finance({ params }: { params: { id: string } }) {
-  const response = await accountStatus(params?.id);
+export default async function Finance() {
+  const church = await getChurches();
+
+  let churchInfo = church?.result?.[0]
+
+  const response = await accountStatus(churchInfo?.church_id);
 
   const StatusIcon = ({ status }: { status: string }) => {
     switch (status) {
@@ -40,7 +45,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
                   <>
                     <div className="flex items-center space-x-3 text-sm">
                       <StatusIcon status={response.stripe_account_status} />
-                      <span className="text-gray-700">
+                      <span className="text-gray-700 dark:text-gray-200">
                         Account Status: {response.stripe_account_status.charAt(0).toUpperCase()
                           + response.stripe_account_status.slice(1)}
                       </span>
@@ -57,7 +62,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
               </div>
               {response?.is_stripe_connected && (
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">Account Capabilities</h3>
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Account Capabilities</h3>
                   <div className="grid grid-cols-2 gap-2">
                     {Object.entries(response.stripe_account_capabilities).map(([capability, status]) => (
                       <div key={capability} className="flex items-center space-x-2 text-sm">
@@ -72,7 +77,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
 
             {response.stripe_account_requirements && (
               <div className="mt-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Account Requirements</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Account Requirements</h3>
                 {response.stripe_account_requirements.disabled_reason && (
                   <p className="text-sm text-yellow-600 mb-2">
                     Disabled Reason: {response.stripe_account_requirements.disabled_reason}
@@ -88,7 +93,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
                   if (items && items.length > 0) {
                     return (
                       <div key={requirement} className="mb-4">
-                        <h4 className="text-sm font-medium text-gray-900 capitalize mb-1">{requirement.replace(/_/g, ' ')}</h4>
+                        <h4 className="text-sm font-medium text-gray-900 dark:text-gray-200 capitalize mb-1">{requirement.replace(/_/g, ' ')}</h4>
                         <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-200">
                           {items.map((item: any, index: number) => (
                             <li key={index}>{typeof item === 'string' ? item : item.reason}</li>

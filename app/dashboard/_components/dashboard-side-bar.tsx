@@ -4,7 +4,8 @@ import clsx from 'clsx'
 import {
   Banknote,
   Globe,
-  Settings
+  Settings,
+  MonitorCog
 } from "lucide-react"
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -21,6 +22,12 @@ const links = [
     label: "Finance",
     icon: <Banknote className="h-3 w-3" />,
     activePath: (pathname: string) => pathname === `/dashboard/finance`
+  },
+  {
+    href: `/dashboard/configure`,
+    label: "Configure",
+    icon: <MonitorCog className="h-3 w-3" />,
+    activePath: (pathname: string) => pathname.includes(`/dashboard/configure`)
   },
   {
     href: `/dashboard/settings`,
