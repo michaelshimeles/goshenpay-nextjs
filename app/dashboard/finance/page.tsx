@@ -1,8 +1,7 @@
-import React from 'react';
 import { accountStatus } from "@/utils/data/connect/account-status";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import RegisterPayment from '../_components/register-payments';
+import RegisterPayment from '../_components/home/register-payments';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CheckCircle2, XCircle, AlertCircle, Clock } from 'lucide-react';
@@ -22,7 +21,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-full max-w-4xl">
       {response ? (
         <Card className="overflow-hidden">
           <CardHeader className="border-b">
@@ -33,7 +32,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 text-sm">
                   <StatusIcon status={response.is_stripe_connected ? 'active' : 'inactive'} />
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-gray-200">
                     Connection Status: {response.is_stripe_connected ? 'Connected' : 'Not Connected'}
                   </span>
                 </div>
@@ -47,8 +46,8 @@ export default async function Finance({ params }: { params: { id: string } }) {
                       </span>
                     </div>
                     <div className="flex items-center space-x-3 text-sm">
-                      <Clock className="h-5 w-5 text-gray-500" />
-                      <span className="text-gray-700">
+                      <Clock className="h-5 w-5 text-gray-500 " />
+                      <span className="text-gray-700 dark:text-gray-200">
                         Account Type: {response.stripe_account_type.charAt(0).toUpperCase()
                           + response.stripe_account_type.slice(1)}
                       </span>
@@ -80,7 +79,7 @@ export default async function Finance({ params }: { params: { id: string } }) {
                   </p>
                 )}
                 {response.stripe_account_requirements.current_deadline && (
-                  <p className="text-sm text-gray-700 mb-2">
+                  <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
                     Deadline: {new Date(response.stripe_account_requirements.current_deadline * 1000).toLocaleDateString()}
                   </p>
                 )}
@@ -90,8 +89,8 @@ export default async function Finance({ params }: { params: { id: string } }) {
                     return (
                       <div key={requirement} className="mb-4">
                         <h4 className="text-sm font-medium text-gray-900 capitalize mb-1">{requirement.replace(/_/g, ' ')}</h4>
-                        <ul className="list-disc pl-5 text-sm text-gray-700">
-                          {items.map((item, index) => (
+                        <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-200">
+                          {items.map((item: any, index: number) => (
                             <li key={index}>{typeof item === 'string' ? item : item.reason}</li>
                           ))}
                         </ul>

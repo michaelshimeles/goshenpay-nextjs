@@ -13,9 +13,12 @@ import { getChurch } from "@/utils/data/church/get-church";
 import { auth } from "@clerk/nextjs/server";
 import DeleteButton from "./_components/church-delete-button";
 import ChurchFormSettings from "./_components/church-form-settings";
+import { getChurches } from "@/utils/data/church/get-churches";
 
-export default async function Settings({ params }: { params: { id: string } }) {
-  const church = await getChurch(params?.id!)
+export default async function Settings() {
+  const church = await getChurches();
+
+  let churchInfo = church?.result?.[0]
   const { userId } = auth()
 
 
@@ -29,7 +32,7 @@ export default async function Settings({ params }: { params: { id: string } }) {
       <p className="leading-7 text-sm dark:text-gray-400">
         Edit your church or organization settings.
       </p>
-      <ChurchFormSettings church={info} id={params.id} />
+      <ChurchFormSettings church={info} id={info.church_id} />
       <Separator className="my-6 max-w-[600px]" />
       <div className="flex justify-between items-center w-full p-4 rounded border max-w-[600px]">
         <div className="flex flex-col">
