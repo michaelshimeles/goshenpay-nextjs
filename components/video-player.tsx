@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { Maximize, Minimize, Pause, Play, Volume2, VolumeX } from 'lucide-react';
 
 interface CustomVideoPlayerProps {

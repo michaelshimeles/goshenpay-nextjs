@@ -8,7 +8,7 @@ import { SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/component
 import { UserProfile } from '@/components/user-profile'
 import config from '@/config'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
-import { Banknote, Folder, HomeIcon, Settings } from 'lucide-react'
+import { Banknote, Folder, HomeIcon, PlusIcon, Settings } from 'lucide-react'
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
@@ -67,6 +67,11 @@ export default function DashboardTopNav({ children }: { children: ReactNode }) {
           </SheetContent>
         </Dialog>
         <div className="flex justify-center items-center gap-2 ml-auto">
+          {/* <Link href="/create">
+            <Button variant="outline" size="icon">
+              <PlusIcon className="h-4 w-4" />
+            </Button>
+          </Link> */}
           {config?.auth?.enabled && <UserProfile />}
           <ModeToggle />
         </div>

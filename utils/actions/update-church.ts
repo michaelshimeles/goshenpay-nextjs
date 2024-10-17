@@ -2,55 +2,46 @@
 
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
+import { updateChurchSchema } from "../types";
 import { fetcherFn } from "../functions";
-import { createChurchSchema } from "../types";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-
-type CreateChurchData = z.infer<typeof createChurchSchema>;
 
 type CreateChurchResponse = {
   success: boolean;
   message: string;
   churchId?: string;
-} | null;
+};
 
-export async function createChurch(
-  data: CreateChurchData
-): Promise<CreateChurchResponse> {
+export async function updateChurch(data: z.infer<typeof updateChurchSchema>) {
+
   const { userId } = auth();
+
   try {
     const clerkResult = await clerkClient.users.getUser(userId!);
 
     if (!clerkResult?.id) {
       return null;
     }
-
-    console.log("data", data);
-
     const result = await fetcherFn<CreateChurchResponse>(
-      "church/create",
+      "church/update",
       data,
       {
         method: "POST",
-        next: { tags: ["churches"] },
       }
     );
 
-    if (result?.success) {
-      // Revalidate the 'get-churches' cache tag
+    if (result.success) {
+      // Revalidate the 'churches' cache tag
       revalidateTag("get-churches");
+      revalidateTag(`get-church-${data?.church_id}`);
     }
 
     return {
-      success: result?.success!,
-      message: result?.message!,
-      churchId: result?.churchId,
+      success: result.success,
+      message: result.message,
+      churchId: result.churchId,
     };
   } catch (error) {
-    console.error("Error in createChurch:", error);
-    return {
-      success: false,
-      message: "An error occurred while creating the church",
-    };
+    return error;
   }
 }
