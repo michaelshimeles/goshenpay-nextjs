@@ -8,7 +8,7 @@ export default function HeroSection() {
                 Setup Payments For Your Church In 5 Minutes
             </h1>
             <p className="text-sm mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
-                Focus on what really matters, serving your church and not the payment system.
+                Focus on what really matters: serving your church, not the payment system.
             </p>
             <div className="flex justify-center items-center gap-3">
                 <Link href="/dashboard" className="mt-5">
