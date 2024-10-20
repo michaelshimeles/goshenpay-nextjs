@@ -5,6 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "./ui/skeleton";
 
 export default function ModeToggle() {
     const { theme, setTheme } = useTheme();
@@ -14,8 +15,9 @@ export default function ModeToggle() {
     useEffect(() => setMounted(true), []);
 
     if (!mounted) {
-        // Render nothing on the server and until the theme is mounted
-        return null;
+       return (
+        <Skeleton className="w-9 h-9"/>
+       )
     }
 
     return (
