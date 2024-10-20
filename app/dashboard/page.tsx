@@ -1,9 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getChurches } from '@/utils/data/church/get-churches';
-import RegisterPayment from './_components/home/register-payments';
 import { Building2, Globe, Mail, Phone } from "lucide-react";
-import Map from "./_components/home/map"
+import Map from "./_components/home/map";
 export default async function Dashboard() {
   const church = await getChurches();
 
@@ -39,7 +38,6 @@ export default async function Dashboard() {
                       <a href={churchInfo?.org_site} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{churchInfo?.org_site}</a>
                     </div>
                   )}
-                  <RegisterPayment />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200">Location Map</h3>
