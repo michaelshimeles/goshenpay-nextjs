@@ -25,6 +25,8 @@ export default async function Finance() {
     }
   };
 
+  console.log('response.stripe_account_requirements', response.stripe_account_requirements)
+
   return (
     <div className="p-6 w-full max-w-4xl">
       {response ? (
@@ -75,7 +77,7 @@ export default async function Finance() {
               )}
             </div>
 
-            {response.stripe_account_requirements && (
+            {response.stripe_account_requirements?.disabled_reason || response.stripe_account_requirements?.current_deadline && (
               <div className="mt-6">
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Account Requirements</h3>
                 {response.stripe_account_requirements.disabled_reason && (
@@ -111,7 +113,7 @@ export default async function Finance() {
               {!response?.is_stripe_connected ? (
                 <RegisterPayment />
               ) : (
-                <Link href="https://dashboard.stripe.com/" target="_blank" rel="noopener noreferrer">
+                <Link href="https://dashboard.stripe.com/test" target="_blank" rel="noopener noreferrer">
                   <Button>Access Stripe Dashboard</Button>
                 </Link>
               )}

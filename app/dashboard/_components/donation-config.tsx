@@ -63,7 +63,7 @@ export default function DonationConfigComponent({
 
       toast("Donation configuration is set")
 
-      router.push("/dashboard/configure")
+      router.push("/dashboard/pricing")
       return response
 
     } catch (error) {

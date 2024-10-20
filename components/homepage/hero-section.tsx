@@ -5,7 +5,7 @@ export default function HeroSection() {
     return (
         <section className='flex flex-col items-center justify-center min-h-[60vh] leading-6 mt-[3rem]' aria-label="Nextjs Starter Kit Hero">
             <h1 className={`text-2xl sm:text-2xl md:text-3xl lg:text-5xl scroll-m-20 font-semibold tracking-tight text-center max-w-[1120px] bg-gradient-to-b dark:text-white`}>
-                Easy To Setup And Use Church Payments Platform
+                Setup Payments For Your Church In 5 Minutes
             </h1>
             <p className="text-sm mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
                 Focus on what really matters, serving your church and not the payment system.
