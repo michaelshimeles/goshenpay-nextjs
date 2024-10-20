@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
+import ModeToggle from "../mode-toggle";
 
 export default function HeroSection() {
     return (
@@ -10,12 +11,13 @@ export default function HeroSection() {
             <p className="text-sm mx-auto max-w-[700px] text-gray-500 text-center mt-2 dark:text-gray-400">
                 Focus on what really matters: serving your church, not the payment system.
             </p>
-            <div className="flex justify-center items-center gap-3">
-                <Link href="/dashboard" className="mt-5">
+            <div className="flex justify-center items-center mt-5 gap-3">
+                <Link href="/dashboard">
                     <Button className="animate-buttonheartbeat rounded-md bg-blue-600 hover:bg-blue-500 text-sm font-semibold text-white">
                         Get Started
                     </Button>
                 </Link>
+                <ModeToggle />
             </div>
             {/* <div>
                 <div className="relative flex max-w-6xl justify-center overflow-hidden mt-7">
