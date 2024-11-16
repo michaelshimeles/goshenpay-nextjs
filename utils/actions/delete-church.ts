@@ -8,7 +8,7 @@ export const deleteChurch = async (church_id: string, user_id: string) => {
   const { userId } = auth();
 
   try {
-    const clerkResult = await clerkClient.users.getUser(userId!);
+    const clerkResult = await clerkClient().users.getUser(userId!)
 
     if (!clerkResult?.id) {
       return null;

@@ -17,7 +17,7 @@ export async function updateChurch(data: z.infer<typeof updateChurchSchema>) {
   const { userId } = auth();
 
   try {
-    const clerkResult = await clerkClient.users.getUser(userId!);
+    const clerkResult = await clerkClient().users.getUser(userId!)
 
     if (!clerkResult?.id) {
       return null;
