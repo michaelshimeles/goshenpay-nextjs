@@ -21,7 +21,7 @@ export default function CancelledPayment() {
           <div className="rounded-lg overflow-hidden shadow-md">
             <VideoPlayer
               videoSrc="https://utfs.io/f/MD2AM9SEY8Gu4i6558XmIj1TPD8kwny9GdxKZfpRH5lvJcMb"
-              autoplay={true}
+              // autoplay={true}
             />
           </div>
         </CardContent>
