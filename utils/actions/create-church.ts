@@ -19,13 +19,12 @@ export async function createChurch(
 ): Promise<CreateChurchResponse> {
   const { userId } = auth();
   try {
-    const clerkResult = await clerkClient.users.getUser(userId!);
+    const clerkResult = await clerkClient().users.getUser(userId!)
 
+    console.log('clerkResult', clerkResult)
     if (!clerkResult?.id) {
       return null;
     }
-
-    console.log("data", data);
 
     const result = await fetcherFn<CreateChurchResponse>(
       "church/create",
@@ -35,6 +34,8 @@ export async function createChurch(
         next: { tags: ["churches"] },
       }
     );
+
+    console.log('result', result)
 
     if (result?.success) {
       // Revalidate the 'get-churches' cache tag

@@ -137,7 +137,7 @@ export const VideoPlayer: React.FC<CustomVideoPlayerProps> = ({ videoSrc }) => {
   }, []);
 
   return (
-    <div ref={playerRef} className="flex flex-col justify-center items-center max-w-full relative mb-16">
+    <div ref={playerRef} className="flex flex-col justify-center items-center max-w-full relative">
       <div className="relative w-full">
         <video
           ref={videoRef}

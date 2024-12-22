@@ -16,7 +16,6 @@ export default async function DonationConfigPage() {
   let churchInfo = church?.result?.[0]
   const result = await getDonationConfig(churchInfo?.church_id)
 
-  console.log('churchInfo', churchInfo?.church_id)
   const donationConfig = result?.result;
 
   if (!donationConfig) {

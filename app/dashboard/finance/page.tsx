@@ -25,8 +25,6 @@ export default async function Finance() {
     }
   };
 
-  console.log('response.stripe_account_requirements', response.stripe_account_requirements)
-
   return (
     <div className="p-6 w-full max-w-4xl">
       {response ? (

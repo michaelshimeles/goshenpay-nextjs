@@ -20,8 +20,6 @@ export async function paymentSubscription(
 
     const result = await response.json();
 
-    console.log("result", result);
-
     return result;
   } catch (error) {
     return error;

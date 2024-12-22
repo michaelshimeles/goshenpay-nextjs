@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 export const getDonationConfig = async (church_id: string) => {
   const { userId } = auth();
 
-  const result = await clerkClient.users.getUser(userId!);
+  const result = await clerkClient().users.getUser(userId!)
 
   if (!result?.id) {
     redirect("/sign-in");
