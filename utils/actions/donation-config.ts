@@ -17,8 +17,7 @@ export async function donationConfig({
 }: donationConfigType) {
   const { userId } = auth();
   try {
-    const clerkResult = await clerkClient().users.getUser(userId!)
-
+    const clerkResult = await clerkClient().users.getUser(userId!);
     if (!clerkResult?.id) {
       return null;
     }
@@ -35,7 +34,9 @@ export async function donationConfig({
       }
     );
 
-    revalidateTag('get-donation-config')
+    console.log('result', result)
+
+    revalidateTag("get-donation-config");
     return {
       success: result?.success!,
       message: result?.message!,

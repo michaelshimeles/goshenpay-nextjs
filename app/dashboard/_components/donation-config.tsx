@@ -55,16 +55,22 @@ export default function DonationConfigComponent({
   const subscriptionFrequencies = watch('subscriptionFrequencies')
 
   async function onSubmit(data: FormData) {
-    console.log("userId", userId)
     try {
       const response = await donationConfig({
         church_id: churchInfo?.church_id, user_id: userId, configJson: data
       })
 
-      toast("Donation configuration is set")
+      console.log('response', response)
 
-      router.push("/dashboard/pricing")
-      return response
+      if (response?.success) {
+        toast.success("Donation configuration is set")
+
+        router.push("/dashboard/pricing")
+        return response
+
+      }
+
+      toast.warning("Donation configuration failed")
 
     } catch (error) {
       return error
